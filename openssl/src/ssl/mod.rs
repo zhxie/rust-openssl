@@ -325,6 +325,12 @@ bitflags! {
         /// Do not use this unless you know what you're doing!
         #[cfg(not(libressl))]
         const SEND_FALLBACK_SCSV = ffi::SSL_MODE_SEND_FALLBACK_SCSV;
+
+        /// Enable asynchronous processing.
+        ///
+        /// Cryptographic operations will be offloaded if there is an asynchronous capable engine.
+        #[cfg(ossl110)]
+        const ASYNC = ffi::SSL_MODE_ASYNC;
     }
 }
 

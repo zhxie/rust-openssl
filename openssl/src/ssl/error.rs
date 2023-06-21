@@ -32,6 +32,11 @@ impl ErrorCode {
     /// An error occurred in the SSL library.
     pub const SSL: ErrorCode = ErrorCode(ffi::SSL_ERROR_SSL);
 
+    /// An attempt to the underlying socket while is is operated by an asynchronous engine.
+    ///
+    /// Wait for readiness and retry the operation.
+    pub const WANT_ASYNC: ErrorCode = ErrorCode(ffi::SSL_ERROR_WANT_ASYNC);
+
     /// The client hello callback indicated that it needed to be retried.
     ///
     /// Requires OpenSSL 1.1.1 or newer.

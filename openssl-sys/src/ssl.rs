@@ -241,6 +241,8 @@ pub const SSL_MODE_SEND_CLIENTHELLO_TIME: c_long = 0x20;
 pub const SSL_MODE_SEND_SERVERHELLO_TIME: c_long = 0x40;
 #[cfg(ossl101)]
 pub const SSL_MODE_SEND_FALLBACK_SCSV: c_long = 0x80;
+#[cfg(ossl110)]
+pub const SSL_MODE_ASYNC: c_long = 0x100;
 
 pub unsafe fn SSL_CTX_set_mode(ctx: *mut SSL_CTX, op: c_long) -> c_long {
     SSL_CTX_ctrl(ctx, SSL_CTRL_MODE, op, ptr::null_mut())
@@ -310,6 +312,8 @@ pub const SSL_ERROR_WANT_READ: c_int = 2;
 pub const SSL_ERROR_WANT_WRITE: c_int = 3;
 pub const SSL_ERROR_WANT_X509_LOOKUP: c_int = 4;
 pub const SSL_ERROR_ZERO_RETURN: c_int = 6;
+#[cfg(ossl110)]
+pub const SSL_ERROR_WANT_ASYNC: c_int = 9;
 #[cfg(ossl111)]
 pub const SSL_ERROR_WANT_CLIENT_HELLO_CB: c_int = 11;
 pub const SSL_VERIFY_NONE: c_int = 0;
